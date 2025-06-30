@@ -5,7 +5,7 @@ import { FaPlusCircle, FaTimesCircle, FaEdit, FaTrash, FaSpinner } from 'react-i
 import clsx from 'clsx'; // For conditional classes
 import { v4 as uuidv4 } from 'uuid'; // For generating temporary IDs
 
-const API_BASE_URL = 'http://localhost:5000'; // Assuming this is consistent
+const API_BASE_URL = 'https://medwell-cv5p.onrender.com'; // Assuming this is consistent
 
 export default function HealthCalendar({ userId }) { // userId will be passed from Dashboard
   const [date, setDate] = useState(new Date()); // Current date displayed on calendar
