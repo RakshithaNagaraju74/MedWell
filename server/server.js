@@ -11,7 +11,10 @@ const app = express();
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://medwell-1-c5wc.onrender.com', // <== Your React frontend hosted on Render
+  credentials: true,
+}));
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
