@@ -10,7 +10,7 @@ import {
 } from 'recharts';
 import clsx from 'clsx';
 
-const API_BASE_URL = 'http://localhost:5000'; // Replace if needed
+const API_BASE_URL = 'https://medwell-cv5p.onrender.com'; // Replace if needed
 
 export default function HealthOverviewAnalytics({ onBackClick }) {
   const [userEmail, setUserEmail] = useState(null);
