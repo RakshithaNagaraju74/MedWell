@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { useFirebaseUser } from '../context/FirebaseUserContext'; // Adjust path based on your project structure
 
 // Corrected API base URL to just the host and port
-const API_BASE_URL = 'http://localhost:5000'; // <--- CORRECTED: Just the base URL
+const API_BASE_URL = 'https://medwell-cv5p.onrender.com'; // <--- CORRECTED: Just the base URL
 
 export default function DocumentManager({ onBackClick }) {
     const { currentUser, loadingAuth } = useFirebaseUser();
