@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { FaPaperPlane, FaRobot, FaMicrophone, FaSpinner, FaExclamationTriangle, FaTimes, FaStethoscope, FaComments, FaArrowLeft } from 'react-icons/fa'; // Added FaStethoscope, FaComments, FaArrowLeft
 import clsx from 'clsx';
 
-const BACKEND_URL = 'http://localhost:5000'; // Ensure this matches your backend URL
+const BACKEND_URL = 'https://medwell-cv5p.onrender.com'; // Ensure this matches your backend URL
 
 export default function SymptomChecker({ onBackClick }) { // Add onBackClick prop
   const [symptomsInput, setSymptomsInput] = useState('');
