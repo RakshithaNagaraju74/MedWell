@@ -1,0 +1,27 @@
+/* For custom scrollbar in chat history */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px; /* For horizontal scrollbars */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Light background for track */
+    border-radius: 10px;
+}
+
+/* Optional: Dark mode scrollbar styles */
+/* .dark .custom-scrollbar::-webkit-scrollbar-track {
+    background: #374151;
+} */
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #a7a7a7; /* Gray thumb */
+    border-radius: 10px;
+    border: 2px solid #f0f0f0; /* Padding around thumb */
+}
+
+/* Optional: Dark mode scrollbar styles */
+/* .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #6b7280;
+    border: 2px solid #374151;
+} */

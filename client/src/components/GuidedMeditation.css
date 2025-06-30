@@ -1,0 +1,518 @@
+.guided-meditation-container {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  margin: 40px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  text-align: center;
+  position: relative; /* Needed for absolute positioning of messages */
+  transition: background-color 0.5s ease; /* Smooth transition for dynamic background */
+}
+
+.guided-meditation-container h2 {
+  color: #4a90e2;
+  margin-bottom: 25px;
+  font-size: 2.2em;
+  font-weight: 600;
+}
+
+.session-count {
+  font-size: 1.2em;
+  margin-bottom: 25px;
+  color: #555;
+  font-weight: 500;
+  display: flex; /* To align count and button */
+  justify-content: center;
+  align-items: center;
+  gap: 15px; /* Space between count and button */
+}
+
+.session-count span {
+  color: #4a90e2;
+  font-weight: bold;
+}
+
+.clear-sessions-button {
+  background-color: #dc3545; /* Red for danger action */
+  color: white;
+  border: none;
+  border-radius: 25px; /* More rounded */
+  padding: 8px 15px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(220, 53, 69, 0.3);
+}
+
+.clear-sessions-button:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.4);
+}
+
+.clear-sessions-button:active {
+  background-color: #ac2925;
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(220, 53, 69, 0.3);
+}
+.meditation-animation {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 300px; /* Adjust as needed */
+  max-height: 300px; /* Adjust as needed */
+  z-index: -1; /* Place it behind other content if needed */
+  opacity: 0.8; /* Optional: Add some transparency */
+}
+
+.category-selection,
+.duration-selection,
+.playback-section {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.category-selection h3,
+.duration-selection h3,
+.playback-section h3 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.buttons-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.select-button {
+  background-color: #e0e0e0;
+  color: #555;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  min-width: 120px;
+}
+
+.select-button:hover {
+  background-color: #d0d0d0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.select-button.active {
+  background-color: #4a90e2;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
+}
+
+.select-button:disabled {
+  background-color: #f0f0f0;
+  color: #aaa;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.current-meditation-info {
+  background-color: #eaf5ff;
+  border: 1px solid #b3d9ff;
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.current-meditation-info p {
+  margin: 8px 0;
+}
+
+.current-meditation-info strong {
+  color: #4a90e2;
+}
+
+.meditation-description {
+    font-size: 0.95em;
+    color: #666;
+    margin-top: 15px;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* Audio Controls Section */
+.audio-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.progress-bar-container {
+  width: 90%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  height: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4a90e2;
+  border-radius: 5px;
+  transition: width 0.1s linear; /* Smooth progress update */
+}
+
+.time-display {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.remaining-time {
+    font-style: italic;
+    color: #888;
+    margin-left: 5px;
+}
+
+.control-buttons-row {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    width: 100%;
+}
+
+.secondary-controls {
+    margin-top: 10px; /* Space between primary and secondary button rows */
+}
+
+.play-pause-button {
+  background-color: #5cb85c; /* Green for play */
+  color: white;
+  border: none;
+  border-radius: 50px; /* Pill shape */
+  padding: 15px 30px;
+  font-size: 1.3em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  min-width: 150px;
+  box-shadow: 0 4px 10px rgba(92, 184, 92, 0.3);
+}
+
+.play-pause-button:hover {
+  background-color: #4cae4c;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(92, 184, 92, 0.4);
+}
+
+.play-pause-button:active {
+  background-color: #398439;
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(92, 184, 92, 0.3);
+}
+
+/* Pause state styling */
+.play-pause-button[data-is-playing="true"] {
+  background-color: #f0ad4e; /* Orange for pause */
+  box-shadow: 0 4px 10px rgba(240, 173, 78, 0.3);
+}
+.play-pause-button[data-is-playing="true"]:hover {
+  background-color: #ec971f;
+  box-shadow: 0 6px 15px rgba(240, 173, 78, 0.4);
+}
+.play-pause-button[data-is-playing="true"]:active {
+  background-color: #d58512;
+  box-shadow: 0 2px 5px rgba(240, 173, 78, 0.3);
+}
+
+.start-new-session-button, .repeat-session-button {
+  background-color: #6c757d; /* Grey/Blue for new session */
+  color: white;
+  border: none;
+  border-radius: 50px; /* Pill shape */
+  padding: 15px 30px;
+  font-size: 1.3em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  min-width: 150px;
+  box-shadow: 0 4px 10px rgba(108, 117, 125, 0.3);
+}
+
+.start-new-session-button:hover, .repeat-session-button:hover {
+  background-color: #5a6268;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(108, 117, 125, 0.4);
+}
+
+.start-new-session-button:active, .repeat-session-button:active {
+  background-color: #495057;
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(108, 117, 125, 0.3);
+}
+
+.skip-button {
+    background-color: #4a90e2; /* Blue for skip buttons */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Circular buttons */
+    width: 60px; /* Fixed width for circular shape */
+    height: 60px; /* Fixed height for circular shape */
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.skip-button:hover {
+    background-color: #357ABD;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(74, 144, 226, 0.4);
+}
+
+.skip-button:active {
+    background-color: #2a6496;
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(74, 144, 226, 0.3);
+}
+
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 90%;
+  max-width: 300px;
+  margin-top: 10px;
+  color: #555;
+  font-size: 0.95em;
+}
+
+.volume-control label {
+    font-weight: bold;
+}
+
+.volume-control input[type="range"] {
+  flex-grow: 1;
+  -webkit-appearance: none; /* Override default slider styles */
+  appearance: none;
+  height: 8px;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: opacity .2s;
+}
+
+.volume-control input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4a90e2;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(74, 144, 226, 0.3);
+}
+
+.volume-control input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4a90e2;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(74, 144, 226, 0.3);
+}
+
+
+.no-meditation-found {
+  color: #d9534f;
+  background-color: #fdf5f5;
+  border: 1px solid #f2dede;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
+  font-size: 1.1em;
+}
+
+/* Styles for the app messages */
+.app-message {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  min-width: 250px;
+  text-align: center;
+}
+
+.app-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.app-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top */
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  animation: fadeInScale 0.3s ease-out forwards;
+}
+
+.modal-content h3 {
+  color: #4a90e2;
+  margin-bottom: 15px;
+  font-size: 1.8em;
+}
+
+.modal-content p {
+  color: #555;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.modal-content strong {
+  color: #4a90e2;
+  font-size: 1.2em;
+}
+
+.modal-button {
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(92, 184, 92, 0.3);
+}
+
+.modal-button:hover {
+  background-color: #4cae4c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(92, 184, 92, 0.4);
+}
+
+.modal-button:active {
+  background-color: #398439;
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(92, 184, 92, 0.3);
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .guided-meditation-container {
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .guided-meditation-container h2 {
+    font-size: 1.8em;
+  }
+
+  .select-button,
+  .play-pause-button,
+  .start-new-session-button,
+  .clear-sessions-button,
+  .modal-button,
+  .skip-button, /* Apply to skip buttons */
+  .repeat-session-button { /* Apply to repeat button */
+    padding: 10px 15px;
+    font-size: 0.9em;
+    min-width: unset; /* Remove min-width on small screens */
+  }
+
+  .skip-button {
+      width: 50px; /* Adjust size for small screens */
+      height: 50px;
+  }
+
+  .buttons-group {
+    justify-content: center;
+  }
+
+  .control-buttons-row {
+      flex-direction: column; /* Stack buttons vertically on small screens */
+      gap: 10px;
+  }
+
+  .play-pause-button {
+      margin-right: 0; /* Remove specific margin for stacked buttons */
+  }
+
+  .volume-control {
+      flex-direction: column; /* Stack volume label and slider */
+      align-items: center;
+      gap: 5px;
+  }
+
+  .volume-control input[type="range"] {
+      width: 100%;
+  }
+
+  .modal-content {
+      padding: 20px;
+  }
+}
