@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { User, Mail, Calendar, Weight, Heart, Moon, Sun, Loader2, ArrowLeft, Dna, Activity } from 'lucide-react';
 import clsx from 'clsx'; // For conditional classes
 
-const BACKEND_URL = 'http://localhost:5000';
+const BACKEND_URL = 'https://medwell-cv5p.onrender.com';
 
 export default function ProfileSetup() {
   const [name, setName] = useState('');
