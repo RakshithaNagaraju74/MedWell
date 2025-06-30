@@ -10,7 +10,7 @@ export default function RequireProfile({ children }) {
   useEffect(() => {
     if (!currentUser) return;
 
-    fetch(`http://localhost:5000/api/user/profile?userId=${currentUser.uid}`)
+    fetch(`https://medwell-cv5p.onrender.com/api/user/profile?userId=${currentUser.uid}`)
       .then(res => {
         if (res.status === 404) {
           navigate('/profile-setup');
